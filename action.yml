@@ -35,9 +35,6 @@ inputs:
 outputs:
   tfsec-return-code:
     description: "tfsec command return code"
-runs:
-  using: "docker"
-  image: "Dockerfile"
 branding:
   icon: "search"
   color: "gray-dark"
