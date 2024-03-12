@@ -56,4 +56,4 @@ tfsec --soft-fail --out=${INPUT_SARIF_FILE} --format=sarif ${TFSEC_ARGS_OPTION} 
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 
-echo "tfsec-return-code=${tfsec_return}" >> $GITHUB_OUTPUT
+echo "tfsec_return_code=${tfsec_return}" >> $GITHUB_OUTPUT

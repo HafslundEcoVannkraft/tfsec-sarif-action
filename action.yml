@@ -32,12 +32,18 @@ inputs:
     description: Scan the entire repository for Terraform issues
     required: false
 
+runs:
+  using: "composite"
+  steps:
+    - name: Run tfsec script
+      id: run
+      shell: sh
+      run: ${{ github.action_path }}/entrypoint.sh
+
 outputs:
   tfsec-return-code:
+    value: ${{ steps.run.outputs.tfsec_return_code }}
     description: "tfsec command return code"
-runs:
-  using: "docker"
-  image: "Dockerfile"
 branding:
   icon: "search"
   color: "gray-dark"
