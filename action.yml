@@ -27,6 +27,9 @@ inputs:
   full_repo_scan:
     description: Scan the entire repository for Terraform issues
     required: false
+  runs_on:
+    description: GitHub runner to run the action on
+    required: false
 
 runs:
   using: "composite"

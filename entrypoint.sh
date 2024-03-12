@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+# debug runtime environment
+env | sort
+cat /etc/*release
+hostname
+
 set -xe
 
 # Check for a github workkspace, exit if not found
