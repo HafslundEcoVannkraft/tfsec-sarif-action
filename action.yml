@@ -16,10 +16,6 @@ inputs:
   tfvars_file:
     description: The tfvars file to use for the scan
     required: false
-  tfsec_version:
-    description: The version of tfsec to use for the scan, defaults to latest
-    default: latest
-    required: false
   config_file:
     description: The path to the config file. (eg. ./tfsec.yml)
     required: false
@@ -36,6 +32,13 @@ runs:
   using: "composite"
   steps:
     - name: Run tfsec script
+      env:
+        INPUT_TFVARS_FILE: ${{ inputs.tfvars_file }}
+        INPUT_CONFIG_FILE: ${{ inputs.config_file }}
+        INPUT_TFSEC_ARGS: ${{ inputs.tfsec_args }}
+        INPUT_FULL_REPO_SCAN: ${{ inputs.full_repo_scan }}
+        INPUT_SARIF_FILE: ${{ inputs.sarif_file }}
+        INPUT_WORKING_DIRECTORY: ${{ inputs.working_directory }}
       id: run
       shell: sh
       run: ${{ github.action_path }}/entrypoint.sh
